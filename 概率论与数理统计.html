@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>概率论与数理统计.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///e%3A/Documents/CSS%20Theme/gitbook/gitbook-teal.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1">概率论与数理统计</h1>
+<blockquote>
+<p>整理重邮常考的知识点</p>
+</blockquote>
+<h2 id="%E7%8B%AC%E7%AB%8B%E7%9B%B8%E5%85%B3%E4%BA%92%E6%96%A5%E6%A6%82%E7%8E%87%E7%9A%84%E8%AE%A1%E7%AE%97">独立、相关、互斥、概率的计算</h2>
+<ul>
+<li>独立<br>
+如果事件A,B相互独立，有$P(AB)=P(A)P(B)$, $E(AB)=E(A)E(B)$</li>
+<li>互斥<br>
+如果事件A,B互斥，有$P(A+B)=P(A)+P(B)$,即$P(AB)=0$</li>
+</ul>
+<blockquote>
+<p>独立与互斥没有任何关系</p>
+</blockquote>
+<ul>
+<li>不相关<br>
+如果事件A，B不相关，有$Cov(A,B)=0$</li>
+</ul>
+<blockquote>
+<p>独立可以推出不相关，不相关不能推出独立</p>
+</blockquote>
+<ul>
+<li>和事件的概率<br>
+$$P(A+B)=P(A)+P(B)-P(AB)$$</li>
+<li>德摩根律<br>
+$$P(\overline{{AB}})=1-P(A+B)$$</li>
+</ul>
+<h2 id="%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87">条件概率</h2>
+<ul>
+<li>
+<p>乘法公式<br>
+在A的条件下，B发生的概率：
+$$P(B|A)=\frac{P(AB)}{P(A)}$$
+满足性质：<br>
+$$P(B|A)=1-P(\overline{B}|A)$$</p>
+</li>
+<li>
+<p>全概率公式<br>
+将A事件（条件）划分为多个事件$A_i$,那么事件B发生的概率：<br>
+$$P(B)=ΣP(A_i)P(B|A_i)$$</p>
+</li>
+<li>
+<p>贝叶斯公式<br>
+全概率公式的逆公式，表示已知B事件发生的概率下，在A中某一个划分下发生的概率：
+$$P(A_i|B)=\frac{P(A_i)P(B|A_i)}{P(B)}=\frac{P(A_i)P(B|A_i)}{ΣP(A_i)P(B|A_i)}$$</p>
+</li>
+</ul>
+<h2 id="%E8%BF%9E%E7%BB%AD%E6%80%A7%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83">连续性随机变量的分布</h2>
+<ul>
+<li>
+<p>概率密度函数<br>
+表示连续性随机变量在数轴上分布的稠密程度,有<br>
+$$\int_{-∞}^∞f(x)dx=1$$<br>
+性质：<br>
+$$P(a≤x≤b)=\int_{a}^bf(x)dx$$</p>
+</li>
+<li>
+<p>概率分布函数<br>
+表示连续性随机变量在数轴左端分布的概率情况，即$P(X≤x)$的概率
+$$F(x)=\int_{-∞}^xf(x)dx$$
+性质：<br>
+$$P(a≤x≤b)=F(b)-F(a)$$
+$$P(x&gt;a)=1-F(a)$$</p>
+</li>
+<li>
+<p>随机变量之间的函数关系<br>
+倘若随机变量X，Y 之间存在某种函数关系$Y=g(X)$,给定X的分布函数$F_x(x)$,求Y的概率密度函数<br>
+$$ F_y(y)=P(Y≤y)=P(g(x)≤y)=P(x≤h(y))=F_X(h(y))$$
+$$f_Y(y)=F'_y(y)=F'_x(h(y))h'(y)$$</p>
+</li>
+</ul>
+<h2 id="%E4%BA%8C%E5%85%83%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F">二元随机变量</h2>
+<ul>
+<li>
+<p>二元连续性随机变量的分布函数
+$$F(x,y)=\iint f(x,y)dA$$</p>
+</li>
+<li>
+<p>边缘分布概率密度和分布函数<br>
+对于$F(x,y)$,<br>
+$$f_x(x)=∫_{-∞}^{∞}f(x,y)dy$$
+$$f_y(y)=∫_{-∞}^{∞}f(x,y)dx$$
+$$F_x(x)=F(x,∞)=\int_{\infty}^x f_x(x)dx$$
+$$F_y(y)=F(∞,y)=\int_{\infty}^y f_y(y)dy$$</p>
+</li>
+<li>
+<p>条件分布函数<br>
+X在Y=y条件下的概率密度：<br>
+$$f_{X|Y}(x,y)=\frac{f(x,y)}{f_Y(y)}$$</p>
+</li>
+<li>
+<p>二元随机变量的分布函数</p>
+<ul>
+<li>Z=X+Y
+$$f_z(z)=∫ f(z-y,y)dy=∫ f(x,z-x)dx$$</li>
+<li>Z=max{X,Y}<br>
+$$F_z(z)=F_x(z)F_y(z)$$</li>
+<li>Z=min{X,Y}
+$$F_z(z)=1-[(1-F_x(x))(1-F_y(y))]$$</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E7%BB%9F%E8%AE%A1%E7%89%B9%E5%BE%81">统计特征</h2>
+<ul>
+<li>
+<p>数学期望<br>
+离散型： 略<br>
+连续型：<br>
+$$ E(x)=\int x f(x)dx$$<br>
+$$ E(g(x))=\iint g(x) f(x,y)dA$$
+性质：</p>
+<ul>
+<li>$E(X+Y)=E(X)+E(Y)$</li>
+<li>X,Y相互独立时：$E(XY)=E(X)E(Y)$</li>
+</ul>
+</li>
+<li>
+<p>方差
+$$D(x)=E(x^2)-[E(x)]^2$$
+$$D(x)=Σ[E{(x-E^2(x))}]$$</p>
+<p>性质:</p>
+<ul>
+<li>$D(X⨦Y)=D(X)+D(Y)$</li>
+<li>$D(Cx)=c^2D(x)$</li>
+</ul>
+</li>
+<li>
+<p>协方差和相关系数</p>
+<ul>
+<li>
+<p>协方差<br>
+$$Cov(X,Y)=E[(X-E(X))(Y-E(Y))]=E(XY)-E(X)E(Y)$$
+协方差反映了两个随机变量的相关性，如果$Cov(X,Y)=0$，则X,Y不相关。<br>
+相关系数是标准化的协方差：
+$$ρ_{(X,Y)}=\frac{Cov(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}$$</p>
+</li>
+<li>
+<p>性质<br>
+$Cov(X,X)=D(X)$<br>
+$Cov(aX+bY,cX+dY)=acD(X)+(ad+bc)Cov(X,Y)+bdD(Y)$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>方差矩阵</p>
+<ul>
+<li>原点矩<br>
+指  $E(X^k)$</li>
+<li>中心距<br>
+指  $E[(X-E(X))^k]$</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86">中心极限定理</h2>
+<p>中心极限定理的使用条件都是n比较大的时候。</p>
+<ul>
+<li>
+<p>李雅普诺夫定理<br>
+对于n个符合正态分布的随机变量$X_1,X_2,...X_n$,他们的和也服从正态分布。
+$$\frac{ΣX_i-Σ\mu_i}{Σσ}∼N(0,1)$$</p>
+</li>
+<li>
+<p>棣莫弗-拉普拉斯定理<br>
+当n足够大时，二项分布可视为正态分布。<br>
+若$X∼B(n,p)$,<br>
+有$E(X)=np$,$D(x)=np(1-p)$。<br>
+那么可以标准化X，有：<br>
+$$\frac{X-E(X)}{√D(X)}∼N(0,1)$$</p>
+</li>
+</ul>
+<h2 id="%E7%BB%9F%E8%AE%A1%E6%A0%B7%E6%9C%AC%E7%9A%84%E6%95%B0%E5%80%BC%E7%89%B9%E5%BE%81%E5%92%8C%E5%88%86%E5%B8%83">统计样本的数值特征和分布</h2>
+<ul>
+<li>样本的数值特征
+<ul>
+<li>样本均值
+$$\overline{X}=\frac{1}{n}Σx_i$$</li>
+<li>样本方差
+$$S^2=\frac{1}{n-1}Σ(x_i-\overline{x})^2$$</li>
+</ul>
+<blockquote>
+<p>n-1</p>
+</blockquote>
+</li>
+<li>样本的分布
+<ul>
+<li>$χ^2$分布<br>
+如果样本$X_1,X_2,...X_n$服从正态分布，那么$χ^2=Σx_i^2$服从自由度为n的$\chi^2$分布。<br>
+$χ^2$统计量：<br>
+$$\chi^2=\frac{(n-1)S^2}{\sigma^2}$$
+分位点：<br>
+双侧α分位点：$\chi^2_{1-\frac{α}{2}}$,$\chi^2_{\frac{α}{2}}$<br>
+单侧α分位点：$\chi^2_{1-α}$，$\chi^2_{α}$</li>
+<li>t分布<br>
+如果样本$X ∼ N(0,1)$,且$Y ∼ χ^2_{n}$, X,Y独立，那么$t=\frac{X}{√\frac{Y}{n^2}}$服从自由度为n的t分布。<br>
+t统计量：<br>
+$$t=\frac{x-\overline{μ}}{S}$$<br>
+分位点：<br>
+双侧α分位点：$t_{\frac{α}{2}}$,$t_{-\frac{α}{2}}$<br>
+单侧α分位点：$t_{α}$,$-t_{α}$</li>
+<li>F分布<br>
+设$U ∼ χ^2(n_1)$,$V ∼ χ^2(n_2)$,U,V相互独立，则称$F=\frac{\frac{U}{N_1}}{\frac{V}{N_2}}$服从自由度为$(n_1,n_2)$的F分布。</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E6%A0%B7%E6%9C%AC%E7%9A%84%E7%9F%A9%E4%BC%B0%E8%AE%A1%E6%B3%95">样本的矩估计法</h2>
+<ul>
+<li>矩估计法<br>
+设X的概率密度函数为$f(x:θ_1,...,\theta_k)$, 用样本1~k阶矩（$E(x^k)$）代替总体1~k阶矩建立k个方程，联立求解。
+<ul>
+<li>结论
+$$μ=\overline{x},~~~~~σ^2=B_2=A_2-A_1^2$$</li>
+</ul>
+</li>
+<li>最大似然估计法<br>
+设X的概率密度函数为$f(x:θ_1,...,\theta_k)$, 通过如下方法找出参数的估计量：
+<ol>
+<li>求解似然函数$L(\theta)=Πf(x)$</li>
+<li>对似然函数取对数$ln(L(\theta))=ln(Πf(x))$</li>
+<li>求导或者是偏导数，使每一个结果都等于0：$\frac{\partial ln(L(\theta)}{\partial θ}=\frac{\partial ln(Πf(x))}{\partial θ}=0$</li>
+<li>求解θ</li>
+</ol>
+</li>
+</ul>
+<h2 id="%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1">区间估计</h2>
+<p>区间估计遵循以下方法：</p>
+<ol>
+<li>选取一个合适的统计量</li>
+<li>找到α分位点</li>
+<li>反解出关于参数的不等式</li>
+<li>代值求出不等式，即为置信区间</li>
+</ol>
+<h2 id="%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C">假设检验</h2>
+<p>假设检验遵循以下方法：</p>
+<ol>
+<li>提出原假设和备择假设，备择假设中不能有等于符号</li>
+<li>找到α分位点</li>
+<li>找到拒绝域</li>
+<li>计算统计量的值，并与分位点的值进行比对，看统计量是否落在了拒绝域</li>
+</ol>
+<h2 id="%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B%E7%9A%84%E6%95%B0%E5%80%BC%E7%89%B9%E5%BE%81%E5%92%8C%E5%B9%B3%E7%A8%B3%E6%80%A7">随机过程的数值特征和平稳性</h2>
+<ul>
+<li>数值特征<br>
+均值函数：$μ_x(t)=E(X(t))$<br>
+    例如：若 $X(t)=At+B$,那么$μ_x(t)=E(X(t))=tE(A)+E(B)$<br>
+自相关函数：$R_{xx}(t_1,t_2)=E[X(t_1).X(t_2)]$<br>
+方差函数：$D_x(t)=R_{xx}(t,t)-[μ_x(t)]^2$</li>
+<li>平稳性<br>
+验证随机过程是否具有宽平稳性需要有三步：</li>
+</ul>
+<ol>
+<li>验证该过程是否是二阶矩过程*</li>
+<li>求均值函数是否是一个参数</li>
+<li>求自相关函数$R(t,t+τ)$是否只与τ有关</li>
+</ol>
+<h2 id="%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE">马尔科夫链</h2>
+<ul>
+<li>
+<p>概率转移矩阵<br>
+表示状态由现态转移到n次态的概率 $P=[次态 \backslash 现态]$
+$$P(n)=p^n$$
+p表示一步转移矩阵，P(n)为n步转移矩阵</p>
+</li>
+<li>
+<p>转移概率
+$$P_{ij}(m,m+n)=P{X_{m+n}=a_j|X_m=a_i}$$
+表示马尔科夫链在时刻m，状态$a_i$下在时刻m+n下转移到状态$a_j$的概率</p>
+</li>
+</ul>
+
+</body>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });</script>
+</html>
