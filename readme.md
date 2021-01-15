@@ -2,4 +2,5 @@
 目前的笔记  
 - Digital Systems and Microprocessors (BUL2019: EE1655 Digital Systems and Microprocessors)  Outline (Analysis of final tests for 5 years) 
 - 电路与器件 (BUL2020: EE1619 Circuits and Devices) 知识大纲  
-- 随机数学 (重庆邮电大学2020：A1110130 随机数学（含概率论、数理统计、随机过程）)  常考点总结 
+- 随机数学 (重庆邮电大学2020：A1110130 随机数学（含概率论、数理统计、随机过程）)  常考点总结  
+- 大学物理下(重庆邮电大学2020：A1110300 大学物理A（下）) 知识点总结  
